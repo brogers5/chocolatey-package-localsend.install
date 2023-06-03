@@ -19,4 +19,7 @@ $msixFilePath = Join-Path -Path $toolsDir -ChildPath $msixFileName
 $currentVersion = Get-CurrentVersion
 $shouldForceUpdate = ($softwareVersion -lt $currentVersion)
 
-Add-AppxPackage -Path $msixFilePath -ForceUpdateFromAnyVersion:$shouldForceUpdate -ForceApplicationShutdown 
+Add-AppxPackage -Path $msixFilePath -ForceUpdateFromAnyVersion:$shouldForceUpdate -ForceApplicationShutdown
+
+#Remove installer binary post-install to prevent disk bloat
+Remove-Item -Path $msixFilePath -Force -ErrorAction SilentlyContinue
