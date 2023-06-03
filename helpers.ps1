@@ -22,7 +22,7 @@ function Get-SoftwareUri($Version) {
 
     $windowsInstallerAsset = $null
     foreach ($asset in $releaseAssets) {
-        if ($asset.name -match 'LocalSend-([\d\.]+)\.msix$') {
+        if ($asset.name -match 'LocalSend-([\d\.]+)(-windows-x86-64)?\.msix$') {
             $windowsInstallerAsset = $asset
             break;
         }
