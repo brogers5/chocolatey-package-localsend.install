@@ -44,6 +44,7 @@ The installer package requires use of Windows 10 version 2004 or later due to it
     <releaseNotes>https://github.com/localsend/localsend/releases/tag/v1.10.0</releaseNotes>
     <dependencies>
       <dependency id="chocolatey-os-dependency.extension" version="0.0.1" />
+      <dependency id="wireless-lan-service" version="1.0.0" />
     </dependencies>
   </metadata>
   <files>
