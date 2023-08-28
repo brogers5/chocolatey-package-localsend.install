@@ -1,4 +1,4 @@
-From: https://raw.githubusercontent.com/localsend/localsend/v1.10.0/LICENSE
+From: https://raw.githubusercontent.com/localsend/localsend/v1.11.0/LICENSE
 
 MIT License
 
