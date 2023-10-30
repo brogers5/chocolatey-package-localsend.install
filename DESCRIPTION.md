@@ -17,6 +17,31 @@ For more information on the LocalSend Protocol, see the [documentation](https://
 
 ![LocalSend Screenshot](https://cdn.jsdelivr.net/gh/brogers5/chocolatey-package-localsend.install@3f4aecbffec6b5f802027e5d928f1738ffd982bf/Screenshot.png)
 
+## Package Parameters
+
+LocalSend supports two different installer package types: a legacy MSIX and a newer EXE installer. To override the package's default behavior (as defined in the Package Notes below), use the preferred package parameter:
+
+- `UseMsix` - Force use of the MSIX package for installs/upgrades.
+- `UseExe` - Force use of the EXE package for install/upgrades.
+
 ## Package Notes
 
-The installer package requires use of Windows 10 version 2004 or later due to its use of [StartupTasks](https://learn.microsoft.com/en-us/uwp/schemas/appxpackage/uapmanifestschema/element-desktop-startuptasks) in the app package manifest. If you require support for an earlier operating system, consider using the [portable version](https://community.chocolatey.org/packages/localsend.portable) of this package instead.
+The install script should install/upgrade using the appropriate package type, with preference given to the EXE if neither or both are currently installed.
+
+The MSIX installer package requires use of Windows 10 version 2004 or later, due to its use of [StartupTasks](https://learn.microsoft.com/en-us/uwp/schemas/appxpackage/uapmanifestschema/element-desktop-startuptasks) in the app package manifest.
+
+The EXE installer package was introduced with v1.12.0, and should be used for older operating system support, or if installer functionality that is not available with the MSIX package is required.
+
+---
+
+The EXE installer was built using Inno Setup. For advanced setup scenarios, refer to [Inno Setup's command-line interface documentation](https://jrsoftware.org/ishelp/index.php?topic=setupcmdline). Any desired arguments can be appended to (or optionally overriding with the `--override-arguments` switch) the package's default install arguments with the `--install-arguments` option.
+
+Installer-specific details (e.g. Setup configuration and supported Languages, Components, and Tasks) can be found in the Inno Setup Script file, which should be [available in LocalSend's source code](https://github.com/localsend/localsend/blob/v1.12.0/scripts/compile_windows_exe-inno.iss) for quick reference.
+
+---
+
+For future upgrade operations, consider opting into Chocolatey's `useRememberedArgumentsForUpgrades` feature to avoid having to pass the same arguments with each upgrade:
+
+```shell
+choco feature enable --name="'useRememberedArgumentsForUpgrades'"
+```

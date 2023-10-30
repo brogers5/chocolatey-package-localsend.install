@@ -32,7 +32,7 @@ choco install localsend.install --source="'.;https://community.chocolatey.org/ap
 
 [Install Chocolatey](https://chocolatey.org/install), the [Chocolatey Automatic Package Updater Module](https://github.com/majkinetor/au), and the [PowerShellForGitHub PowerShell Module](https://github.com/microsoft/PowerShellForGitHub), then clone this repository.
 
-Once cloned, simply run `build.ps1`. The MSIX is intentionally untracked to avoid bloating the repository, so the script will download the LocalSend installer MSIX from the official distribution point, then packs everything together.
+Once cloned, simply run `build.ps1`. The installer binaries are intentionally untracked to avoid bloating the repository, so the script will download the binaries from the official distribution point, then packs everything together.
 
 A successful build will create `localsend.install.x.y.z.nupkg`, where `x.y.z` should be the Nuspec's `version` value at build time.
 

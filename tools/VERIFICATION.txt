@@ -2,21 +2,24 @@ VERIFICATION
 Verification is intended to assist the Chocolatey moderators and community
 in verifying that this package's contents are trustworthy.
 
-The packaged Windows installer is available for independent download via the Releases page on
+The packaged Windows installers are available for independent download via the Releases page on
 LocalSend's GitHub repository. A download link for the packaged version is included at the
 following URL:
 https://github.com/localsend/localsend/releases/tag/v1.12.0
 
-For convenience, this is a direct URL to the relevant asset:
-https://github.com/localsend/localsend/releases/download/v1.12.0/LocalSend-1.12.0-windows-x86-64.msix
+For convenience, these are direct URLs to the relevant assets:
+MSIX: https://github.com/localsend/localsend/releases/download/v1.12.0/LocalSend-1.12.0-windows-x86-64.msix
+EXE: https://github.com/localsend/localsend/releases/download/v1.12.0/LocalSend-1.12.0-windows-x86-64.exe
 
-The following PowerShell command will print a calculated SHA256 hash:
+The following PowerShell pipeline will print calculated SHA256 hashes:
 
-    (Get-FileHash -Path LocalSend-1.12.0-windows-x86-64.msix -Algorithm SHA256).Hash
+    Get-FileHash -Path @('LocalSend-1.12.0-windows-x86-64.msix', 'LocalSend-1.12.0-windows-x86-64.exe') -Algorithm SHA256 | Select-Object -Property Path, Hash
 
-This command should be executed against an independently downloaded installer, as well as the copy
-distributed with the package. Both hash values should be identical. A matching hash value should
-confirm that no corruption or tampering has occurred during this package's generation process.
+This pipeline should be executed against both independently downloaded binaries, as well as the
+copies distributed with the package. Both copies of each binary should have identical hash values.
+A matching hash value should confirm that no corruption or tampering has occurred during this package's
+generation process.
 
-For reference, the following SHA256 hash was calculated during the package's automated creation:
-FAD4CB58B54926E1FD499419A72A0E3B968BA400F29D8E4D49F694C3165B4DA9
+For reference, the following SHA256 hashes were calculated during the package's automated creation:
+LocalSend-1.12.0-windows-x86-64.msix: FAD4CB58B54926E1FD499419A72A0E3B968BA400F29D8E4D49F694C3165B4DA9
+LocalSend-1.12.0-windows-x86-64.exe: 055E863E50809ED14C265EE3376DE8670CDA3EF973DBA103A797E2718892E3F3

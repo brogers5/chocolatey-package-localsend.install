@@ -1,2 +1,3 @@
 /*.nupkg
 /tools/LocalSend-*.msix
+/tools/LocalSend-*.exe
