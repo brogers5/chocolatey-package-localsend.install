@@ -30,7 +30,7 @@ if ($programs.Count -eq 1) {
         Uninstall-ChocolateyPackage @packageArgs
     }
     else {
-        Remove-AppxPackage -Package $program
+        Remove-AppxPackage -Package $program -AllUsers
     }
 }
 elseif ($programs.Count -eq 0) {

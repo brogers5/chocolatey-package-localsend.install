@@ -20,7 +20,6 @@ $exeFilePath = Join-Path -Path $toolsDir -ChildPath $exeFileName
 $pp = Get-PackageParameters
 if ($pp.UseMsix) {
     Write-Output 'Forcing use of MSIX installer package'
-    $currentVersion = Get-CurrentMsixVersion
     $useMsix = $true
 
     $exeVersion = Get-CurrentExeVersion
@@ -31,7 +30,6 @@ if ($pp.UseMsix) {
 }
 elseif ($pp.UseExe) {
     Write-Output 'Forcing use of EXE installer package'
-    $currentVersion = Get-CurrentExeVersion
     $useExe = $true
 
     $msixVersion = Get-CurrentMsixVersion
@@ -80,8 +78,10 @@ if ($useExe) {
 elseif ($useMsix) {
     Confirm-Win10 -ReqBuild 19041
 
-    $shouldForceUpdate = ($softwareVersion -lt $currentVersion)
-    Add-AppxPackage -Path $msixFilePath -ForceUpdateFromAnyVersion:$shouldForceUpdate -ForceApplicationShutdown
+    $dismImageObject = Add-ProvisionedAppPackage -PackagePath $msixFilePath -Online -SkipLicense
+    if ($dismImageObject.RestartNeeded) {
+        Set-PowerShellExitCode -ExitCode 3010
+    }
 }
 
 #Remove installer binaries post-install to prevent disk bloat

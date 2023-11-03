@@ -5,10 +5,10 @@ $exeSoftwareNamePattern = 'LocalSend version *'
 
 function Get-Packages($Publisher) {
     if ([string]::IsNullOrEmpty($Publisher)) {
-        return Get-AppxPackage -Name $packageName -PackageTypeFilter Main
+        return Get-AppxPackage -Name $packageName -PackageTypeFilter Main -AllUsers
     }
 
-    return Get-AppxPackage -Name $packageName -Publisher $Publisher -PackageTypeFilter Main
+    return Get-AppxPackage -Name $packageName -Publisher $Publisher -PackageTypeFilter Main -AllUsers
 }
 
 function Get-CurrentExeVersion {
@@ -22,7 +22,7 @@ function Get-CurrentExeVersion {
 }
 
 function Get-CurrentMsixVersion {
-    [array] $packages = Get-Packages -Publisher $developerPublisher
+    [array] $packages = Get-AppxPackage -Name $packageName -Publisher $developerPublisher -PackageTypeFilter Main -AllUsers
 
     if ($packages.Count -gt 0) {
         return [version] $($packages[0]).Version
@@ -32,7 +32,7 @@ function Get-CurrentMsixVersion {
 }
 
 function Get-StoreSignedPackage {
-    [array] $packages = Get-Packages -Publisher $storePublisher
+    [array] $packages = Get-AppxPackage -Name $packageName -Publisher $storePublisher -PackageTypeFilter Main -AllUsers 
 
     if ($packages.Count -gt 0) {
         return $packages[0]
