@@ -21,7 +21,7 @@ function global:au_BeforeUpdate($Package) {
 
     $templateFilePath = Join-Path -Path $toolsDir -ChildPath 'VERIFICATION.txt.template'
     $verificationFilePath = Join-Path -Path $toolsDir -ChildPath 'VERIFICATION.txt'
-    Copy-Item -Path $templateFilePath  -Destination $verificationFilePath -Force
+    Copy-Item -Path $templateFilePath -Destination $verificationFilePath -Force
 
     Set-DescriptionFromReadme -Package $Package -ReadmePath '.\DESCRIPTION.md'
 }
