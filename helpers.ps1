@@ -15,7 +15,7 @@ function Get-SoftwareUri($Version) {
         $release = (Get-GitHubRelease -OwnerName $owner -RepositoryName $repository -Latest)[0]
     }
     else {
-        $release = Get-GitHubRelease -OwnerName $owner -RepositoryName $repository -Tag "v$($Version.ToString)"
+        $release = Get-GitHubRelease -OwnerName $owner -RepositoryName $repository -Tag "v$($Version.ToString())"
     }
 
     $releaseAssets = Get-GitHubReleaseAsset -OwnerName $owner -RepositoryName $repository -Release $release.ID
