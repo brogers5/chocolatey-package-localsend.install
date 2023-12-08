@@ -3,17 +3,17 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>localsend.install</id>
-    <version>1.13.0</version>
-    <packageSourceUrl>https://github.com/brogers5/chocolatey-package-localsend.install/tree/v1.13.0</packageSourceUrl>
+    <version>1.13.1</version>
+    <packageSourceUrl>https://github.com/brogers5/chocolatey-package-localsend.install/tree/v1.13.1</packageSourceUrl>
     <owners>sublym0nal</owners>
     <title>LocalSend (Install)</title>
     <authors>Tien Do Nam</authors>
     <projectUrl>https://localsend.org/</projectUrl>
     <iconUrl>https://cdn.jsdelivr.net/gh/brogers5/chocolatey-package-localsend.install@3f4aecbffec6b5f802027e5d928f1738ffd982bf/localsend.install.png</iconUrl>
     <copyright>Copyright (c) 2022-2023 Tien Do Nam</copyright>
-    <licenseUrl>https://github.com/localsend/localsend/blob/v1.13.0/LICENSE</licenseUrl>
+    <licenseUrl>https://github.com/localsend/localsend/blob/v1.13.1/LICENSE</licenseUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
-    <projectSourceUrl>https://github.com/localsend/localsend/tree/v1.13.0</projectSourceUrl>
+    <projectSourceUrl>https://github.com/localsend/localsend/tree/v1.13.1</projectSourceUrl>
     <mailingListUrl>https://github.com/localsend/localsend/discussions</mailingListUrl>
     <bugTrackerUrl>https://github.com/localsend/localsend/issues</bugTrackerUrl>
     <tags>localsend message file transfer 64-bit cross-platform foss</tags>
@@ -41,7 +41,7 @@ For more information on the LocalSend Protocol, see the [documentation](https://
 
 The installer package requires use of Windows 10 version 2004 or later due to its use of [StartupTasks](https://learn.microsoft.com/en-us/uwp/schemas/appxpackage/uapmanifestschema/element-desktop-startuptasks) in the app package manifest. If you require support for an earlier operating system, consider using the [portable version](https://community.chocolatey.org/packages/localsend.portable) of this package instead.
 ]]></description>
-    <releaseNotes>https://github.com/localsend/localsend/releases/tag/v1.13.0</releaseNotes>
+    <releaseNotes>https://github.com/localsend/localsend/releases/tag/v1.13.1</releaseNotes>
     <dependencies>
       <dependency id="chocolatey-os-dependency.extension" version="0.0.1" />
     </dependencies>
