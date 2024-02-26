@@ -12,10 +12,10 @@ if ($null -ne $storeSignedPackage) {
     To prevent possible issues with package coexistence, please manually uninstall this version at your earliest convenience."
 }
 
-$msixFileName = 'LocalSend-1.13.1-windows-x86-64.msix'
+$msixFileName = 'LocalSend-1.14.0-windows-x86-64.msix'
 $msixFilePath = Join-Path -Path $toolsDir -ChildPath $msixFileName
 
-[version] $softwareVersion = '1.13.1'
+[version] $softwareVersion = '1.14.0'
 $currentVersion = Get-CurrentVersion
 $shouldForceUpdate = ($softwareVersion -lt $currentVersion)
 
