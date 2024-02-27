@@ -2,7 +2,7 @@
 
 Confirm-Win10 -ReqBuild 19041
 
-$toolsDir = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
+$toolsDir = "$(Split-Path -Parent $MyInvocation.MyCommand.Definition)"
 . $toolsDir\helpers.ps1
 
 $storeSignedPackage = Get-StoreSignedPackage
