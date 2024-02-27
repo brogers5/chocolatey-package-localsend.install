@@ -15,11 +15,10 @@ if ($null -ne $storeSignedPackage) {
 $msixFileName = 'LocalSend-1.14.0-windows-x86-64.msix'
 $msixFilePath = Join-Path -Path $toolsDir -ChildPath $msixFileName
 
-[version] $softwareVersion = '1.14.0'
-$currentVersion = Get-CurrentVersion
-$shouldForceUpdate = ($softwareVersion -lt $currentVersion)
-
-Add-AppxPackage -Path $msixFilePath -ForceUpdateFromAnyVersion:$shouldForceUpdate -ForceApplicationShutdown
+$dismImageObject = Add-AppxProvisionedPackage -PackagePath $msixFilePath -Online -SkipLicense
+if ($dismImageObject.RestartNeeded) {
+    Set-PowerShellExitCode -ExitCode 3010
+}
 
 #Remove installer binary post-install to prevent disk bloat
 Remove-Item -Path $msixFilePath -Force -ErrorAction SilentlyContinue

@@ -5,7 +5,7 @@ $toolsDir = "$(Split-Path -Parent $MyInvocation.MyCommand.Definition)"
 [array] $packages = Get-Packages -Publisher $developerPublisher
     
 if ($packages.Count -eq 1) {
-    Remove-AppxPackage -Package $packages[0]
+    Remove-AppxPackage -Package $packages[0] -AllUsers
 }
 elseif ($packages.Count -eq 0) {
     Write-Warning "$env:ChocolateyPackageName has already been uninstalled by other means."
