@@ -2,11 +2,10 @@
 $toolsDir = "$(Split-Path -Parent $MyInvocation.MyCommand.Definition)"
 . $toolsDir\helpers.ps1
 
-$programs = [System.Collections.ArrayList]::new()
-
-$msixPackages = [array] (Get-Packages -Publisher $developerPublisher)
-if ($null -ne $msixPackages) {
-    $programs.AddRange($msixPackages)
+[array] $packages = Get-Packages -Publisher $developerPublisher
+    
+if ($packages.Count -eq 1) {
+    Remove-AppxPackage -Package $packages[0] -AllUsers
 }
 
 $exePackages = [array] (Get-UninstallRegistryKey -SoftwareName $exeSoftwareNamePattern)

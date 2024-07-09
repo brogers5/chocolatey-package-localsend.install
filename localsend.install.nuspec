@@ -3,31 +3,22 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>localsend.install</id>
-    <version>1.12.0</version>
-    <packageSourceUrl>https://github.com/brogers5/chocolatey-package-localsend.install/tree/v1.12.0</packageSourceUrl>
+    <version>1.14.0</version>
+    <packageSourceUrl>https://github.com/brogers5/chocolatey-package-localsend.install/tree/v1.14.0</packageSourceUrl>
     <owners>sublym0nal</owners>
     <title>LocalSend (Install)</title>
     <authors>Tien Do Nam</authors>
     <projectUrl>https://localsend.org/</projectUrl>
     <iconUrl>https://cdn.jsdelivr.net/gh/brogers5/chocolatey-package-localsend.install@3f4aecbffec6b5f802027e5d928f1738ffd982bf/localsend.install.png</iconUrl>
-    <copyright>Copyright (c) 2022-2023 Tien Do Nam</copyright>
-    <licenseUrl>https://github.com/localsend/localsend/blob/v1.12.0/LICENSE</licenseUrl>
+    <copyright>Copyright (c) 2022-2024 Tien Do Nam</copyright>
+    <licenseUrl>https://github.com/localsend/localsend/blob/v1.14.0/LICENSE</licenseUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
-    <projectSourceUrl>https://github.com/localsend/localsend/tree/v1.12.0</projectSourceUrl>
+    <projectSourceUrl>https://github.com/localsend/localsend/tree/v1.14.0</projectSourceUrl>
     <mailingListUrl>https://github.com/localsend/localsend/discussions</mailingListUrl>
     <bugTrackerUrl>https://github.com/localsend/localsend/issues</bugTrackerUrl>
     <tags>localsend message file transfer 64-bit cross-platform foss</tags>
     <summary>An open source cross-platform alternative to AirDrop</summary>
-    <description><![CDATA[
----
-
-### [choco://localsend.install](choco://localsend.install)
-
-To use choco:// protocol URLs, install [(unofficial) choco:// Protocol support](https://community.chocolatey.org/packages/choco-protocol-support)
-
----
-
-## LocalSend
+    <description><![CDATA[## LocalSend
 
 LocalSend is a cross-platform app that enables secure communication between devices using a REST API and HTTPS encryption. Unlike other messaging apps that rely on external servers, LocalSend doesn't require an internet connection or third-party servers, making it a fast and reliable solution for local communication.
 
@@ -66,10 +57,9 @@ For future upgrade operations, consider opting into Chocolatey's `useRememberedA
 choco feature enable --name="'useRememberedArgumentsForUpgrades'"
 ```
 ]]></description>
-    <releaseNotes>https://github.com/localsend/localsend/releases/tag/v1.12.0</releaseNotes>
+    <releaseNotes>https://github.com/localsend/localsend/releases/tag/v1.14.0</releaseNotes>
     <dependencies>
       <dependency id="chocolatey-os-dependency.extension" version="0.0.1" />
-      <dependency id="wireless-lan-service" version="1.0.0" />
     </dependencies>
   </metadata>
   <files>

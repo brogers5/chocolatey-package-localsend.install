@@ -10,13 +10,13 @@ if ($null -ne $storeSignedPackage) {
     To prevent possible issues with package coexistence, please manually uninstall this version at your earliest convenience."
 }
 
-$msixFileName = 'LocalSend-1.12.0-windows-x86-64.msix'
-$exeFileName = 'LocalSend-1.12.0-windows-x86-64.exe'
+$msixFileName = 'LocalSend-1.14.0-windows-x86-64.msix'
+$exeFileName = 'LocalSend-1.14.0-windows-x86-64.exe'
 
 $msixFilePath = Join-Path -Path $toolsDir -ChildPath $msixFileName
 $exeFilePath = Join-Path -Path $toolsDir -ChildPath $exeFileName
 
-[version] $softwareVersion = '1.12.0'
+[version] $softwareVersion = '1.14.0'
 $pp = Get-PackageParameters
 if ($pp.UseMsix) {
     Write-Output 'Forcing use of MSIX installer package'

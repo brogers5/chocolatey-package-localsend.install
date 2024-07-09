@@ -32,7 +32,7 @@ function Get-CurrentMsixVersion {
 }
 
 function Get-StoreSignedPackage {
-    [array] $packages = Get-AppxPackage -Name $packageName -Publisher $storePublisher -PackageTypeFilter Main -AllUsers 
+    [array] $packages = Get-AppxPackage -Name $packageName -Publisher $storePublisher -PackageTypeFilter Main -AllUsers
 
     if ($packages.Count -gt 0) {
         return $packages[0]
