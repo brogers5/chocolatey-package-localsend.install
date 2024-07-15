@@ -15,11 +15,9 @@ The following PowerShell pipeline will print calculated SHA256 hashes:
 
     Get-FileHash -Path @('LocalSend-1.14.0-windows-x86-64.msix', 'LocalSend-1.14.0-windows-x86-64.exe') -Algorithm SHA256 | Select-Object -Property Path, Hash
 
-This pipeline should be executed against both independently downloaded binaries, as well as the
-copies distributed with the package. Both copies of each binary should have identical hash values.
-A matching hash value should confirm that no corruption or tampering has occurred during this package's
-generation process.
+This command should be executed against an independently downloaded installer, as well as the copy
+distributed with the package. Both hash values should be identical. A matching hash value should
+confirm that no corruption or tampering has occurred during this package's generation process.
 
-For reference, the following SHA256 hashes were calculated during the package's automated creation:
-LocalSend-1.14.0-windows-x86-64.msix: FE566398D0A4FC26D2DFA846FB40EADFD00569A6E73AFBC1A8BE0F982677A1B1
-LocalSend-1.14.0-windows-x86-64.exe: 22023DF4CF010D66C11DEF61B183CF6387922CB9AB6E4AB95A1695C56C9AB6DC
+For reference, the following SHA256 hash was calculated during the package's automated creation:
+22023DF4CF010D66C11DEF61B183CF6387922CB9AB6E4AB95A1695C56C9AB6DC

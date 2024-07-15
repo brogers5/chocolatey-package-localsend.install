@@ -9,19 +9,10 @@ $nuspecFileRelativePath = Join-Path -Path $currentPath -ChildPath 'localsend.ins
 $version = $nuspec.package.metadata.version
 
 $global:Latest = @{
-    FileType = 'msix'
-    Url64 = Get-SoftwareMsixUri -Version $version
+    Url64 = Get-SoftwareUri -Version $version
 }
 
-Write-Output 'Downloading MSIX...'
-Get-RemoteFiles -Purge -NoSuffix
-
-$global:Latest = @{
-    FileType = 'exe'
-    Url64 = Get-SoftwareExeUri -Version $version
-}
-
-Write-Output 'Downloading EXE...'
+Write-Output 'Downloading...'
 Get-RemoteFiles -Purge -NoSuffix
 
 Write-Output 'Creating package...'

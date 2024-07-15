@@ -8,35 +8,16 @@ $softwareRepo = 'localsend/localsend'
 
 function global:au_GetLatest {
     $version = Get-LatestStableVersion
-    $msixUri = Get-SoftwareMsixUri
-    $exeUri = Get-SoftwareExeUri
 
     return @{
-        ExeUrl64        = $exeUri
-        FileType        = 'msix'
-        MsixUrl64       = $msixUri
         SoftwareVersion = $version
-        Url64           = $msixUri
+        Url64           = Get-SoftwareUri
         Version         = $version #This may change if building a package fix version
     }
 }
 
 function global:au_BeforeUpdate($Package) {
-    $Latest.ChecksumType64 = 'SHA256'
-
-    Get-RemoteFiles -Purge -NoSuffix -Algorithm $Latest.ChecksumType64
-    #Persist the MSIX's values before running Get-RemoteFiles again for the EXE, which will change the source variables
-    $Latest.MsixFileName64 = $Latest.FileName64
-    $Latest.MsixChecksum64 = $Latest.Checksum64
-
-    #Set up for the EXE package
-    $Latest.FileName64 = ([uri] $Latest.ExeUrl64).Segments[-1]
-    $Latest.FileType = 'exe'
-    $Latest.Url64 = $Latest.ExeUrl64
-
-    Get-RemoteFiles -Purge -NoSuffix -Algorithm $Latest.ChecksumType64
-    $Latest.ExeFileName64 = $Latest.FileName64
-    $Latest.ExeChecksum64 = $Latest.Checksum64
+    Get-RemoteFiles -Purge -NoSuffix -Algorithm sha256
 
     $templateFilePath = Join-Path -Path $toolsDir -ChildPath 'VERIFICATION.txt.template'
     $verificationFilePath = Join-Path -Path $toolsDir -ChildPath 'VERIFICATION.txt'
@@ -63,19 +44,14 @@ function global:au_SearchReplace {
             '(<copyright>)[^<]*(</copyright>)'               = "`$1Copyright (c) 2022-$(Get-Date -Format yyyy) Tien Do Nam`$2"
         }
         'tools\VERIFICATION.txt'        = @{
-            '%exeChecksumValue%'      = "$($Latest.ExeChecksum64)"
-            '%msixChecksumValue%'     = "$($Latest.MsixChecksum64)"
-            '%checksumType%'          = "$($Latest.ChecksumType64.ToUpper())"
-            '%tagReleaseUrl%'         = "https://github.com/$($softwareRepo)/releases/tag/v$($Latest.SoftwareVersion)"
-            '%exeInstallerUrl%'       = "$($Latest.ExeUrl64)"
-            '%msixInstallerUrl%'      = "$($Latest.MsixUrl64)"
-            '%exeInstallerFileName%'  = "$($Latest.ExeFileName64)"
-            '%msixInstallerFileName%' = "$($Latest.MsixFileName64)"
+            '%checksumValue%'     = "$($Latest.Checksum64)"
+            '%checksumType%'      = "$($Latest.ChecksumType64.ToUpper())"
+            '%tagReleaseUrl%'     = "https://github.com/$($softwareRepo)/releases/tag/v$($Latest.SoftwareVersion)"
+            '%installerUrl%'      = "$($Latest.Url64)"
+            '%installerFileName%' = "$($Latest.FileName64)"
         }
         'tools\chocolateyinstall.ps1'   = @{
-            '(^[$]exeFileName\s*=\s*)(''.*'')'               = "`$1'$($Latest.ExeFileName64)'"
-            '(^[$]msixFileName\s*=\s*)(''.*'')'              = "`$1'$($Latest.MsixFileName64)'"
-            "(^\[version\] [$]softwareVersion\s*=\s*)('.*')" = "`$1'$($Latest.SoftwareVersion)'"
+            '(^[$]fileName\s*=\s*)(''.*'')' = "`$1'$($Latest.FileName64)'"
         }
     }
 }

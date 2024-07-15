@@ -28,13 +28,6 @@ For more information on the LocalSend Protocol, see the [documentation](https://
 
 ![LocalSend Screenshot](https://cdn.jsdelivr.net/gh/brogers5/chocolatey-package-localsend.install@3f4aecbffec6b5f802027e5d928f1738ffd982bf/Screenshot.png)
 
-## Package Parameters
-
-LocalSend supports two different installer package types: a legacy MSIX and a newer EXE installer. To override the package's default behavior (as defined in the Package Notes below), use the preferred package parameter:
-
-- `UseMsix` - Force use of the MSIX package for installs/upgrades.
-- `UseExe` - Force use of the EXE package for install/upgrades.
-
 ## Package Notes
 
 The install script should install/upgrade using the appropriate package type, with preference given to the EXE if neither or both are currently installed.
@@ -66,7 +59,6 @@ choco feature enable --name="'useRememberedArgumentsForUpgrades'"
     <file src="tools\chocolateyinstall.ps1" target="tools" />
     <file src="tools\chocolateyuninstall.ps1" target="tools" />
     <file src="tools\helpers.ps1" target="tools" />
-    <file src="tools\LocalSend-*.msix" target="tools" />
     <file src="tools\LocalSend-*.exe" target="tools" />
     <file src="tools\LICENSE.txt" target="tools" />
     <file src="tools\VERIFICATION.txt" target="tools" />

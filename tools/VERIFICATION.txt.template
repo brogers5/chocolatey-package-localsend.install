@@ -2,24 +2,21 @@
 Verification is intended to assist the Chocolatey moderators and community
 in verifying that this package's contents are trustworthy.
 
-The packaged Windows installers are available for independent download via the Releases page on
+The packaged Windows installer is available for independent download via the Releases page on
 LocalSend's GitHub repository. A download link for the packaged version is included at the
 following URL:
 %tagReleaseUrl%
 
-For convenience, these are direct URLs to the relevant assets:
-MSIX: %msixInstallerUrl%
-EXE: %exeInstallerUrl%
+For convenience, this is a direct URL to the relevant asset:
+%installerUrl%
 
-The following PowerShell pipeline will print calculated %checksumType% hashes:
+The following PowerShell command will print a calculated %checksumType% hash:
 
-    Get-FileHash -Path @('%msixInstallerFileName%', '%exeInstallerFileName%') -Algorithm %checksumType% | Select-Object -Property Path, Hash
+    (Get-FileHash -Path %installerFileName% -Algorithm %checksumType%).Hash
 
-This pipeline should be executed against both independently downloaded binaries, as well as the
-copies distributed with the package. Both copies of each binary should have identical hash values.
-A matching hash value should confirm that no corruption or tampering has occurred during this package's
-generation process.
+This command should be executed against an independently downloaded installer, as well as the copy
+distributed with the package. Both hash values should be identical. A matching hash value should
+confirm that no corruption or tampering has occurred during this package's generation process.
 
-For reference, the following %checksumType% hashes were calculated during the package's automated creation:
-%msixInstallerFileName%: %msixChecksumValue%
-%exeInstallerFileName%: %exeChecksumValue%
+For reference, the following %checksumType% hash was calculated during the package's automated creation:
+%checksumValue%
