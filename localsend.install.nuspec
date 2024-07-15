@@ -56,6 +56,7 @@ choco feature enable --name="'useRememberedArgumentsForUpgrades'"
     </dependencies>
   </metadata>
   <files>
+    <file src="tools\chocolateybeforemodify.ps1" target="tools" />
     <file src="tools\chocolateyinstall.ps1" target="tools" />
     <file src="tools\chocolateyuninstall.ps1" target="tools" />
     <file src="tools\helpers.ps1" target="tools" />
