@@ -23,7 +23,16 @@ function global:au_BeforeUpdate($Package) {
     $verificationFilePath = Join-Path -Path $toolsDir -ChildPath 'VERIFICATION.txt'
     Copy-Item -Path $templateFilePath -Destination $verificationFilePath -Force
 
-    Set-DescriptionFromReadme -Package $Package -ReadmePath '.\DESCRIPTION.md'
+    $readmePath = '.\DESCRIPTION.md'
+    $readmeContents = Get-Content $readmePath -Encoding UTF8
+    $readmeContents = $readmeContents -replace '/blob/v([\d\.]+)\/', "/blob/v$($Latest.SoftwareVersion)/"
+
+    $encoding = New-Object System.Text.UTF8Encoding($false)
+    $output = $readmeContents | Out-String
+    $absoluteFilePath = (Get-Item -Path $readmePath).FullName
+    [System.IO.File]::WriteAllText($absoluteFilePath, $output, $encoding)
+
+    Set-DescriptionFromReadme -Package $Package -ReadmePath $readmePath
 }
 
 function global:au_AfterUpdate {
