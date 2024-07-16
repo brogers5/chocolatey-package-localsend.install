@@ -17,7 +17,7 @@ if ($null -ne $developerSignedPackage) {
     Uninstall-LegacyDeveloperPackage
 }
 
-$fileName = 'LocalSend-1.14.0-windows-x86-64.exe'
+$fileName = 'LocalSend-1.15.0-windows-x86-64.exe'
 $filePath = Join-Path -Path $toolsDir -ChildPath $fileName
 
 Confirm-WinMinimumBuild -ReqBuild 7601

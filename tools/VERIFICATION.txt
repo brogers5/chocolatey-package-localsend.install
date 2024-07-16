@@ -2,22 +2,21 @@ VERIFICATION
 Verification is intended to assist the Chocolatey moderators and community
 in verifying that this package's contents are trustworthy.
 
-The packaged Windows installers are available for independent download via the Releases page on
+The packaged Windows installer is available for independent download via the Releases page on
 LocalSend's GitHub repository. A download link for the packaged version is included at the
 following URL:
-https://github.com/localsend/localsend/releases/tag/v1.14.0
+https://github.com/localsend/localsend/releases/tag/v1.15.0
 
-For convenience, these are direct URLs to the relevant assets:
-MSIX: https://github.com/localsend/localsend/releases/download/v1.14.0/LocalSend-1.14.0-windows-x86-64.msix
-EXE: https://github.com/localsend/localsend/releases/download/v1.14.0/LocalSend-1.14.0-windows-x86-64.exe
+For convenience, this is a direct URL to the relevant asset:
+https://github.com/localsend/localsend/releases/download/v1.15.0/LocalSend-1.15.0-windows-x86-64.exe
 
-The following PowerShell pipeline will print calculated SHA256 hashes:
+The following PowerShell command will print a calculated SHA256 hash:
 
-    Get-FileHash -Path @('LocalSend-1.14.0-windows-x86-64.msix', 'LocalSend-1.14.0-windows-x86-64.exe') -Algorithm SHA256 | Select-Object -Property Path, Hash
+    (Get-FileHash -Path LocalSend-1.15.0-windows-x86-64.exe -Algorithm SHA256).Hash
 
 This command should be executed against an independently downloaded installer, as well as the copy
 distributed with the package. Both hash values should be identical. A matching hash value should
 confirm that no corruption or tampering has occurred during this package's generation process.
 
 For reference, the following SHA256 hash was calculated during the package's automated creation:
-22023DF4CF010D66C11DEF61B183CF6387922CB9AB6E4AB95A1695C56C9AB6DC
+6EE23742FA59DBA96C7BE8FB953BF3F3F5828FEEC8EC05E3AE1CA0B08B0FDF5E

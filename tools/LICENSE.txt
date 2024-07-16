@@ -1,8 +1,8 @@
-From: https://raw.githubusercontent.com/localsend/localsend/v1.14.0/LICENSE
+From: https://raw.githubusercontent.com/localsend/localsend/v1.15.0/LICENSE
 
 MIT License
 
-Copyright (c) 2022-2023 Tien Do Nam
+Copyright (c) 2022-2024 Tien Do Nam
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
