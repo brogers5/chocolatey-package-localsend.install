@@ -23,7 +23,7 @@ if ([Environment]::OSVersion.Version.Major -ge 10) {
     }
 }
 
-$fileName = 'LocalSend-1.15.1-windows-x86-64.exe'
+$fileName = 'LocalSend-1.15.2-windows-x86-64.exe'
 $filePath = Join-Path -Path $toolsDir -ChildPath $fileName
 
 $packageArgs = @{
