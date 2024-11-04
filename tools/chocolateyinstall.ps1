@@ -1,6 +1,6 @@
 ﻿$ErrorActionPreference = 'Stop'
 
-Confirm-WinMinimumBuild -ReqBuild 7601
+Confirm-WinMinimumBuild -ReqBuild 9200
 
 $toolsDir = "$(Split-Path -Parent $MyInvocation.MyCommand.Definition)"
 . $toolsDir\helpers.ps1
