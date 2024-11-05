@@ -12,7 +12,7 @@ For more information on the LocalSend Protocol, see the [documentation](https://
 
 The installer executed by this package was built using Inno Setup. For advanced setup scenarios, refer to [Inno Setup's command-line interface documentation](https://jrsoftware.org/ishelp/index.php?topic=setupcmdline). Any desired arguments can be appended to (or optionally overriding with the `--override-arguments` switch) the package's default install arguments with the `--install-arguments` option.
 
-Installer-specific details (e.g. Setup configuration and supported Languages, Components, and Tasks) can be found in the Inno Setup Script file, which should be [available in LocalSend's source code](https://github.com/localsend/localsend/blob/v1.16.0/scripts/compile_windows_exe-inno.iss) for quick reference.
+Installer-specific details (e.g. Setup configuration and supported Languages, Components, and Tasks) can be found in the Inno Setup Script file, which should be [available in LocalSend's source code](https://github.com/localsend/localsend/blob/v1.16.1/scripts/compile_windows_exe-inno.iss) for quick reference.
 
 ---
 
