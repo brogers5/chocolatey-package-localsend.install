@@ -1,4 +1,4 @@
-From: https://raw.githubusercontent.com/localsend/localsend/v1.16.1/LICENSE
+From: https://raw.githubusercontent.com/localsend/localsend/v1.17.0/LICENSE
 
                                  Apache License
                            Version 2.0, January 2004
