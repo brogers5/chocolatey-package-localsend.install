@@ -11,7 +11,7 @@ function global:au_GetLatest {
 
     return @{
         SoftwareVersion = $version
-        Url64           = Get-SoftwareUri
+        Url64           = Get-SoftwareUri -Version $version
         Version         = $version #This may change if building a package fix version
     }
 }

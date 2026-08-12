@@ -2,11 +2,36 @@
 
 $owner = 'localsend'
 $repository = 'localsend'
+$assetPattern = 'LocalSend-([\d\.]+)(-windows-x86-64)?\.exe$'
 
 function Get-LatestStableVersion {
-    $latestRelease = (Get-GitHubRelease -OwnerName $owner -RepositoryName $repository -Latest)[0]
-
-    return $($latestRelease.tag_name.Substring(1))
+    # Get multiple recent releases to find one with the required asset
+    $releases = Get-GitHubRelease -OwnerName $owner -RepositoryName $repository
+    
+    foreach ($release in $releases) {
+        $version = $release.tag_name.Substring(1)
+        
+        # Get the list of assets for this release
+        $releaseAssets = Get-GitHubReleaseAsset -OwnerName $owner -RepositoryName $repository -Release $release.ID
+        
+        # Check if the required asset exists in this release
+        $matchingAsset = $null
+        foreach ($asset in $releaseAssets) {
+            if ($asset.name -match $assetPattern) {
+                $matchingAsset = $asset
+                break
+            }
+        }
+        
+        if ($matchingAsset) {
+            return $version
+        }
+        else {
+            Write-Warning "Skipping over LocalSend release v$version, as it does not contain the required asset: LocalSend-$version-windows-x86-64.exe"
+        }
+    }
+    
+    throw 'No release was found with the required asset (LocalSend-*-windows-x86-64.exe)!'
 }
 
 function Get-SoftwareUri($Version) {
@@ -22,7 +47,7 @@ function Get-SoftwareUri($Version) {
 
     $windowsInstallerAsset = $null
     foreach ($asset in $releaseAssets) {
-        if ($asset.name -match 'LocalSend-([\d\.]+)(-windows-x86-64)?\.exe$') {
+        if ($asset.name -match $assetPattern) {
             $windowsInstallerAsset = $asset
             break
         }
